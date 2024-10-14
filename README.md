@@ -9,3 +9,9 @@ type: 'mysql',
 Además, también tiene el cors para el puerto 4200 para su uso con Angular. El contenedor de mysql lo cree con docker con el comando  
 docker run --name nestauth -e MYSQL_ROOT_PASSWORD=root_password -e MYSQL_DATABASE=yt_nest_auth -e MYSQL_USER=user -e MYSQL_PASSWORD=root_password -p 3306:3306 -d mysql:latest  
 Y el host está asignado para funcionar con el contenedor creado dentro de wsl, después agregare .env, ya me quiero ir a doormir. 👍
+
+También utiliza https por medio de un certificado autofirmado genreado con mkcert, con los comandos
+npm install -g mkcert
+mkcert create-ca
+mkcert create-cert
+(Gracias al tutorial https://www.youtube.com/watch?v=Joz9HngdC4M)

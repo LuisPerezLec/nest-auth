@@ -48,7 +48,11 @@ export class AppController {
 
     const jwt = await this.jwtService.signAsync( { id: user.id });
 
-    response.cookie( 'jwt', jwt, { httpOnly: true });
+    response.cookie( 'jwt', jwt, { 
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true
+    });
 
     return {
       message: "success"
@@ -81,7 +85,10 @@ export class AppController {
   async logout(
     @Res( { passthrough: true }) response: Response
   ){
-    response.clearCookie('jwt');
+    response.clearCookie('jwt', {
+      sameSite: 'none',
+      secure: true
+    });
 
     return {
       message: "success"
